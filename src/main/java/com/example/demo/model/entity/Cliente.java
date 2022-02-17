@@ -23,21 +23,20 @@ public class Cliente {
 	@Column(name = "cpf", nullable = false)
 	private String cpf;
 
-	@Column(name = "data_cadastro")
+	@Column(name = "data_cadastro", updatable = false)
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDate dataCadastro;
 
 	public Cliente() {
 		super();
-		this.dataCadastro = LocalDate.now();
 	}
 
-	public Cliente(Integer id, String nome, String cpf) {
+	public Cliente(Integer id, String nome, String cpf, LocalDate dataCadastro) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.cpf = cpf;
-		this.dataCadastro = LocalDate.now();
+		this.dataCadastro = dataCadastro;
 	}
 
 	public Integer getId() {
