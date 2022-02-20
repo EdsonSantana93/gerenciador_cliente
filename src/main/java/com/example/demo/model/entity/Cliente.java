@@ -7,6 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.br.CPF;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -18,9 +21,12 @@ public class Cliente {
 	private Integer id;
 
 	@Column(name = "nome", nullable = false, length = 180)
+	@NotEmpty
 	private String nome;
 
 	@Column(name = "cpf", nullable = false)
+	@NotEmpty
+	@CPF	
 	private String cpf;
 
 	@Column(name = "data_cadastro", updatable = false)
