@@ -21,12 +21,12 @@ public class Cliente {
 	private Integer id;
 
 	@Column(name = "nome", nullable = false, length = 180)
-	@NotEmpty
+	@NotEmpty(message = "${campo.nome.obrigatorio}")
 	private String nome;
 
 	@Column(name = "cpf", nullable = false)
-	@NotEmpty
-	@CPF	
+	@NotEmpty(message = "${campo.cpf.obrigatorio}")
+	@CPF(message = "${campo.cpf.invalido}")	
 	private String cpf;
 
 	@Column(name = "data_cadastro", updatable = false)

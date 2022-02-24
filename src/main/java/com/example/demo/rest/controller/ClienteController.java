@@ -2,6 +2,8 @@ package com.example.demo.rest.controller;
 
 import java.time.LocalDate;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -27,7 +29,7 @@ public class ClienteController {
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public Cliente salvar(@RequestBody Cliente cliente) {
+	public Cliente salvar(@Valid @RequestBody Cliente cliente) {
 		cliente.setDataCadastro();
 		return repository.save(cliente);
 	}
@@ -49,7 +51,7 @@ public class ClienteController {
 
 	@PatchMapping("{id}")
 	@ResponseStatus(HttpStatus.OK)
-	public Cliente atualizarCliente(@RequestBody Cliente clienteAtualizado, @PathVariable Integer id) {
+	public Cliente atualizarCliente(@Valid @RequestBody Cliente clienteAtualizado, @PathVariable Integer id) {
 		return repository.findById(id).map(cliente -> {
 			cliente.setNome(clienteAtualizado.getNome());
 			cliente.setCpf(clienteAtualizado.getCpf());
